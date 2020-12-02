@@ -1,0 +1,3799 @@
+{
+	"name": "m45_RetailSales",
+	"properties": {
+		"activities": [
+			{
+				"name": "m45_RetailSales_File01",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "amazinglashslcexport//history_product_sales_File01.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.tmp_SC_RetailSales"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AmazonS3ReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"preCopyScript": "IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'tmp_SC_RetailSales') AND type in (N'U'))\nDROP TABLE dbo.tmp_SC_RetailSales\n",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "LocationName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LocationName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " location_id ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " location_id ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cproductcode ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cproductcode ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cproductdescription ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cproductdescription ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " tdatetime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " tdatetime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ndrawerid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ndrawerid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " itransdetailid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " itransdetailid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iheaderid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iheaderid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cinvoiceno ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cinvoiceno ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iitemid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iitemid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iempid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iempid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iclientid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iclientid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iappttype ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iappttype ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nprice ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nprice ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nquantity ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nquantity ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cdiscount ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cdiscount ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nempcharge ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nempcharge ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nhousecharge ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nhousecharge ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lprebook ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lprebook ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lonline ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lonline ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lrefund ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lrefund ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ltaxable ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ltaxable ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lgst ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lgst ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lpst ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lpst ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ipackageid",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ipackageid",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_m45",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_m45",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "m45_RetailSales_File02",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "m45_RetailSales_File01",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "amazinglashslcexport//history_product_sales_File01.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.tmp_SC_RetailSales"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AmazonS3ReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "LocationName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LocationName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " location_id ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " location_id ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cproductcode ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cproductcode ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cproductdescription ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cproductdescription ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " tdatetime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " tdatetime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ndrawerid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ndrawerid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " itransdetailid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " itransdetailid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iheaderid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iheaderid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cinvoiceno ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cinvoiceno ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iitemid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iitemid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iempid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iempid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iclientid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iclientid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iappttype ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iappttype ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nprice ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nprice ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nquantity ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nquantity ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cdiscount ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cdiscount ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nempcharge ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nempcharge ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nhousecharge ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nhousecharge ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lprebook ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lprebook ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lonline ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lonline ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lrefund ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lrefund ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ltaxable ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ltaxable ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lgst ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lgst ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lpst ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lpst ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ipackageid",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ipackageid",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "m45_RetailSales_File02",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_m45",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "m45_RetailSales_File03",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "m45_RetailSales_File01",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "amazinglashslcexport//history_product_sales_File01.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.tmp_SC_RetailSales"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AmazonS3ReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "LocationName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LocationName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " location_id ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " location_id ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cproductcode ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cproductcode ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cproductdescription ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cproductdescription ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " tdatetime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " tdatetime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ndrawerid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ndrawerid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " itransdetailid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " itransdetailid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iheaderid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iheaderid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cinvoiceno ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cinvoiceno ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iitemid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iitemid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iempid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iempid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iclientid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iclientid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iappttype ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iappttype ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nprice ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nprice ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nquantity ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nquantity ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cdiscount ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cdiscount ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nempcharge ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nempcharge ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nhousecharge ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nhousecharge ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lprebook ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lprebook ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lonline ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lonline ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lrefund ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lrefund ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ltaxable ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ltaxable ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lgst ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lgst ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lpst ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lpst ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ipackageid",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ipackageid",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "m45_RetailSales_File03",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_m45",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "m45_RetailSales_File04",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "m45_RetailSales_File01",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "amazinglashslcexport//history_product_sales_File01.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.tmp_SC_RetailSales"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AmazonS3ReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "LocationName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LocationName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " location_id ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " location_id ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cproductcode ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cproductcode ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cproductdescription ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cproductdescription ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " tdatetime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " tdatetime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ndrawerid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ndrawerid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " itransdetailid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " itransdetailid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iheaderid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iheaderid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cinvoiceno ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cinvoiceno ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iitemid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iitemid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iempid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iempid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iclientid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iclientid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iappttype ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iappttype ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nprice ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nprice ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nquantity ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nquantity ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cdiscount ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cdiscount ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nempcharge ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nempcharge ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nhousecharge ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nhousecharge ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lprebook ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lprebook ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lonline ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lonline ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lrefund ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lrefund ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ltaxable ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ltaxable ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lgst ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lgst ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lpst ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lpst ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ipackageid",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ipackageid",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "m45_RetailSales_File04",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_m45",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "m45_RetailSales_File05",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "m45_RetailSales_File01",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "amazinglashslcexport//history_product_sales_File01.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.tmp_SC_RetailSales"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AmazonS3ReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "LocationName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LocationName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " location_id ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " location_id ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cproductcode ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cproductcode ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cproductdescription ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cproductdescription ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " tdatetime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " tdatetime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ndrawerid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ndrawerid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " itransdetailid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " itransdetailid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iheaderid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iheaderid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cinvoiceno ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cinvoiceno ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iitemid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iitemid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iempid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iempid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iclientid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iclientid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iappttype ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iappttype ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nprice ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nprice ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nquantity ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nquantity ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cdiscount ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cdiscount ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nempcharge ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nempcharge ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nhousecharge ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nhousecharge ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lprebook ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lprebook ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lonline ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lonline ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lrefund ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lrefund ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ltaxable ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ltaxable ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lgst ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lgst ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lpst ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lpst ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ipackageid",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ipackageid",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "m45_RetailSales_File05",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_m45",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "m45_RetailSales_File06",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "m45_RetailSales_File01",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "amazinglashslcexport//history_product_sales_File01.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.tmp_SC_RetailSales"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AmazonS3ReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "LocationName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LocationName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " location_id ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " location_id ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cproductcode ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cproductcode ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cproductdescription ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cproductdescription ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " tdatetime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " tdatetime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ndrawerid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ndrawerid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " itransdetailid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " itransdetailid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iheaderid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iheaderid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cinvoiceno ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cinvoiceno ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iitemid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iitemid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iempid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iempid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iclientid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iclientid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iappttype ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iappttype ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nprice ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nprice ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nquantity ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nquantity ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cdiscount ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cdiscount ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nempcharge ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nempcharge ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nhousecharge ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nhousecharge ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lprebook ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lprebook ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lonline ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lonline ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lrefund ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lrefund ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ltaxable ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ltaxable ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lgst ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lgst ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lpst ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lpst ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ipackageid",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ipackageid",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "m45_RetailSales_File06",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_m45",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "m45_RetailSales_File07",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "m45_RetailSales_File01",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "amazinglashslcexport//history_product_sales_File01.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.tmp_SC_RetailSales"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AmazonS3ReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "LocationName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LocationName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " location_id ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " location_id ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cproductcode ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cproductcode ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cproductdescription ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cproductdescription ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " tdatetime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " tdatetime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ndrawerid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ndrawerid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " itransdetailid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " itransdetailid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iheaderid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iheaderid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cinvoiceno ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cinvoiceno ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iitemid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iitemid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iempid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iempid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iclientid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iclientid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iappttype ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iappttype ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nprice ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nprice ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nquantity ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nquantity ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cdiscount ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cdiscount ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nempcharge ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nempcharge ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nhousecharge ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nhousecharge ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lprebook ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lprebook ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lonline ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lonline ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lrefund ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lrefund ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ltaxable ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ltaxable ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lgst ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lgst ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lpst ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lpst ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ipackageid",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ipackageid",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "m45_RetailSales_File07",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_m45",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "m45_RetailSales_File08",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "m45_RetailSales_File01",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "amazinglashslcexport//history_product_sales_File01.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.tmp_SC_RetailSales"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AmazonS3ReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "LocationName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LocationName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " location_id ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " location_id ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cproductcode ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cproductcode ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cproductdescription ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cproductdescription ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " tdatetime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " tdatetime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ndrawerid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ndrawerid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " itransdetailid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " itransdetailid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iheaderid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iheaderid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cinvoiceno ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cinvoiceno ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iitemid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iitemid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iempid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iempid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iclientid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iclientid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iappttype ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iappttype ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nprice ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nprice ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nquantity ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nquantity ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cdiscount ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cdiscount ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nempcharge ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nempcharge ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nhousecharge ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nhousecharge ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lprebook ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lprebook ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lonline ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lonline ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lrefund ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lrefund ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ltaxable ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ltaxable ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lgst ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lgst ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lpst ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lpst ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ipackageid",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ipackageid",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "m45_RetailSales_File08",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_m45",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "m45_RetailSales_File09",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "m45_RetailSales_File01",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "amazinglashslcexport//history_product_sales_File01.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.tmp_SC_RetailSales"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AmazonS3ReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "LocationName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LocationName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " location_id ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " location_id ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cproductcode ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cproductcode ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cproductdescription ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cproductdescription ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " tdatetime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " tdatetime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ndrawerid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ndrawerid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " itransdetailid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " itransdetailid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iheaderid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iheaderid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cinvoiceno ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cinvoiceno ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iitemid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iitemid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iempid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iempid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iclientid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iclientid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iappttype ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iappttype ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nprice ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nprice ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nquantity ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nquantity ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cdiscount ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cdiscount ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nempcharge ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nempcharge ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nhousecharge ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nhousecharge ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lprebook ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lprebook ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lonline ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lonline ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lrefund ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lrefund ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ltaxable ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ltaxable ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lgst ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lgst ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lpst ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lpst ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ipackageid",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ipackageid",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "m45_RetailSales_File09",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_m45",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "m45_RetailSales_File10",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "m45_RetailSales_File01",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "amazinglashslcexport//history_product_sales_File01.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.tmp_SC_RetailSales"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AmazonS3ReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "LocationName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LocationName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " location_id ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " location_id ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cproductcode ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cproductcode ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cproductdescription ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cproductdescription ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " tdatetime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " tdatetime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ndrawerid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ndrawerid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " itransdetailid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " itransdetailid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iheaderid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iheaderid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cinvoiceno ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cinvoiceno ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iitemid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iitemid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iempid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iempid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iclientid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iclientid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iappttype ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iappttype ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nprice ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nprice ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nquantity ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nquantity ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cdiscount ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cdiscount ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nempcharge ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nempcharge ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nhousecharge ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nhousecharge ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lprebook ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lprebook ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lonline ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lonline ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lrefund ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lrefund ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ltaxable ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ltaxable ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lgst ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lgst ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lpst ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lpst ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ipackageid",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ipackageid",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "m45_RetailSales_File10",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_m45",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "m45_RetailSales_File11",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "m45_RetailSales_File01",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "amazinglashslcexport//history_product_sales_File01.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.tmp_SC_RetailSales"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AmazonS3ReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "LocationName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LocationName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " location_id ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " location_id ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cproductcode ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cproductcode ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cproductdescription ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cproductdescription ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " tdatetime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " tdatetime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ndrawerid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ndrawerid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " itransdetailid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " itransdetailid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iheaderid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iheaderid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cinvoiceno ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cinvoiceno ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iitemid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iitemid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iempid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iempid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iclientid ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iclientid ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " iappttype ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " iappttype ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nprice ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nprice ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nquantity ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nquantity ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " cdiscount ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " cdiscount ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nempcharge ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nempcharge ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " nhousecharge ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " nhousecharge ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lprebook ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lprebook ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lonline ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lonline ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lrefund ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lrefund ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ltaxable ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ltaxable ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lgst ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lgst ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " lpst ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " lpst ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ipackageid",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ipackageid",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "m45_RetailSales_File11",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_m45",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-12-01T14:42:54Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

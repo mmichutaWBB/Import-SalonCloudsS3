@@ -1,0 +1,16 @@
+{
+	"name": "SharedWBBSQL2_AL_Staging",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": "integrated security=False;data source=WBB-SQL2;initial catalog=AL_Staging;user id=svc_ADFAutomation",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI3MmYwZjhhMC04YzBjLTRlNjItOWI5OC00OWI5NWM1MjQ4YjYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "SharedWBB2IntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

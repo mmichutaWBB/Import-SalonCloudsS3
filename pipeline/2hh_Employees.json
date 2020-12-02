@@ -1,0 +1,162 @@
+{
+	"name": "2hh_Employees",
+	"properties": {
+		"activities": [
+			{
+				"name": "2hh_Employees_File01",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "amazinglashslcexport//Amazing_Lash_all_locations_employee_list.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.tmp_SC_Employees"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AmazonS3ReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"preCopyScript": "IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'tmp_SC_Employees') AND type in (N'U'))\nDROP TABLE dbo.tmp_SC_Employees\n",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "LocationName",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LocationName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "location_id",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "location_id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "iid",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "iid",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ccode",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ccode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "clastname",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "clastname",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "cfirstname",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "cfirstname",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "carea",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "carea",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "cphone",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "cphone",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "2hh_Employees_File01",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_2hh",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-11-18T17:26:49Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

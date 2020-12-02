@@ -1,0 +1,126 @@
+{
+	"name": "b4g_ServicesRendered_File11",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SalonCloudsS3Bucket",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AmazonS3Location",
+				"bucketName": "amazinglashslcexport",
+				"fileName": "history_service_sales_File11.csv"
+			},
+			"columnDelimiter": "|",
+			"rowDelimiter": "\n",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "LocationName ",
+				"type": "String"
+			},
+			{
+				"name": " location_id ",
+				"type": "String"
+			},
+			{
+				"name": " cservicecode ",
+				"type": "String"
+			},
+			{
+				"name": " cservicedescription ",
+				"type": "String"
+			},
+			{
+				"name": " tdatetime ",
+				"type": "String"
+			},
+			{
+				"name": " ndrawerid ",
+				"type": "String"
+			},
+			{
+				"name": " itransdetailid ",
+				"type": "String"
+			},
+			{
+				"name": " iheaderid ",
+				"type": "String"
+			},
+			{
+				"name": " cinvoiceno ",
+				"type": "String"
+			},
+			{
+				"name": " iitemid ",
+				"type": "String"
+			},
+			{
+				"name": " iempid ",
+				"type": "String"
+			},
+			{
+				"name": " iclientid ",
+				"type": "String"
+			},
+			{
+				"name": " iappttype ",
+				"type": "String"
+			},
+			{
+				"name": " nprice ",
+				"type": "String"
+			},
+			{
+				"name": " nquantity ",
+				"type": "String"
+			},
+			{
+				"name": " cdiscount ",
+				"type": "String"
+			},
+			{
+				"name": " nempcharge ",
+				"type": "String"
+			},
+			{
+				"name": " nhousecharge ",
+				"type": "String"
+			},
+			{
+				"name": " lprebook ",
+				"type": "String"
+			},
+			{
+				"name": " lonline ",
+				"type": "String"
+			},
+			{
+				"name": " lrefund ",
+				"type": "String"
+			},
+			{
+				"name": " ltaxable ",
+				"type": "String"
+			},
+			{
+				"name": " lgst ",
+				"type": "String"
+			},
+			{
+				"name": " lpst ",
+				"type": "String"
+			},
+			{
+				"name": " imembershipsaledetailid",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

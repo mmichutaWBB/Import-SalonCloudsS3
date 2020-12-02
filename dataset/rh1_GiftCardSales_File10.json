@@ -1,0 +1,142 @@
+{
+	"name": "rh1_GiftCardSales_File10",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SalonCloudsS3Bucket",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AmazonS3Location",
+				"bucketName": "amazinglashslcexport",
+				"fileName": "history_giftcard_sales_File10.csv"
+			},
+			"columnDelimiter": "|",
+			"rowDelimiter": "\n",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "LocationName ",
+				"type": "String"
+			},
+			{
+				"name": " location_id ",
+				"type": "String"
+			},
+			{
+				"name": " iid ",
+				"type": "String"
+			},
+			{
+				"name": " ilocationid ",
+				"type": "String"
+			},
+			{
+				"name": " cgiftnumber ",
+				"type": "String"
+			},
+			{
+				"name": " cinvoiceno ",
+				"type": "String"
+			},
+			{
+				"name": " iheaderid ",
+				"type": "String"
+			},
+			{
+				"name": " ipurchby ",
+				"type": "String"
+			},
+			{
+				"name": " ipurchfor ",
+				"type": "String"
+			},
+			{
+				"name": " igifttypeid ",
+				"type": "String"
+			},
+			{
+				"name": " iempid ",
+				"type": "String"
+			},
+			{
+				"name": " nprice ",
+				"type": "String"
+			},
+			{
+				"name": " norigamt ",
+				"type": "String"
+			},
+			{
+				"name": " namtleft ",
+				"type": "String"
+			},
+			{
+				"name": " ntip ",
+				"type": "String"
+			},
+			{
+				"name": " ntipleft ",
+				"type": "String"
+			},
+			{
+				"name": " dexpiration ",
+				"type": "String"
+			},
+			{
+				"name": " dvalidfrom ",
+				"type": "String"
+			},
+			{
+				"name": " irefbyid ",
+				"type": "String"
+			},
+			{
+				"name": " lgiftcard ",
+				"type": "String"
+			},
+			{
+				"name": " igid ",
+				"type": "String"
+			},
+			{
+				"name": " loffsitegc ",
+				"type": "String"
+			},
+			{
+				"name": " \"mnotes\" ",
+				"type": "String"
+			},
+			{
+				"name": " soldonline ",
+				"type": "String"
+			},
+			{
+				"name": " tlastmodified ",
+				"type": "String"
+			},
+			{
+				"name": " tdatetime ",
+				"type": "String"
+			},
+			{
+				"name": " iclientid ",
+				"type": "String"
+			},
+			{
+				"name": " lmailorder ",
+				"type": "String"
+			},
+			{
+				"name": " iloginid",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

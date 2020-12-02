@@ -1,0 +1,98 @@
+{
+	"name": "5oc_Appointments_File04",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SalonCloudsS3Bucket",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AmazonS3Location",
+				"bucketName": "amazinglashslcexport",
+				"fileName": "history_appointments_list_File04.csv"
+			},
+			"columnDelimiter": "|",
+			"rowDelimiter": "\n",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "LocationName ",
+				"type": "String"
+			},
+			{
+				"name": " location_id ",
+				"type": "String"
+			},
+			{
+				"name": " ApptId ",
+				"type": "String"
+			},
+			{
+				"name": " ClientID ",
+				"type": "String"
+			},
+			{
+				"name": " clientName ",
+				"type": "String"
+			},
+			{
+				"name": " Email ",
+				"type": "String"
+			},
+			{
+				"name": " Zip ",
+				"type": "String"
+			},
+			{
+				"name": " ServiceID ",
+				"type": "String"
+			},
+			{
+				"name": " ServiceName ",
+				"type": "String"
+			},
+			{
+				"name": " StaffID ",
+				"type": "String"
+			},
+			{
+				"name": " StaffName ",
+				"type": "String"
+			},
+			{
+				"name": " ApptDate ",
+				"type": "String"
+			},
+			{
+				"name": " ApptTime ",
+				"type": "String"
+			},
+			{
+				"name": " CheckedIn ",
+				"type": "String"
+			},
+			{
+				"name": " CheckInTime ",
+				"type": "String"
+			},
+			{
+				"name": " CheckoutTime ",
+				"type": "String"
+			},
+			{
+				"name": " Noshow ",
+				"type": "String"
+			},
+			{
+				"name": " clientFirstVistedDate",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

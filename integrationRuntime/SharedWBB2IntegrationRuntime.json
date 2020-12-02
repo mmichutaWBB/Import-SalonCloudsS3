@@ -1,0 +1,12 @@
+{
+	"name": "SharedWBB2IntegrationRuntime",
+	"properties": {
+		"type": "SelfHosted",
+		"typeProperties": {
+			"linkedInfo": {
+				"resourceId": "/subscriptions/18ffac0d-b204-4296-a0db-8bebc5a549b8/resourcegroups/WBB-RG1/providers/Microsoft.DataFactory/factories/ALSSalonCloudsCSV/integrationruntimes/WBBSQL2IntegrationRuntime",
+				"authorizationType": "Rbac"
+			}
+		}
+	}
+}

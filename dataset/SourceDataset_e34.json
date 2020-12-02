@@ -1,0 +1,70 @@
+{
+	"name": "SourceDataset_e34",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SalonCloudsS3Bucket",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AmazonS3Location",
+				"bucketName": "amazinglashslcexport",
+				"fileName": "clients_list_File01.csv"
+			},
+			"columnDelimiter": "|",
+			"rowDelimiter": "\n",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "LocationName ",
+				"type": "String"
+			},
+			{
+				"name": " location_id ",
+				"type": "String"
+			},
+			{
+				"name": " ClientId ",
+				"type": "String"
+			},
+			{
+				"name": " Name ",
+				"type": "String"
+			},
+			{
+				"name": " Email ",
+				"type": "String"
+			},
+			{
+				"name": " Phone ",
+				"type": "String"
+			},
+			{
+				"name": " optinEmail ",
+				"type": "String"
+			},
+			{
+				"name": " optinText ",
+				"type": "String"
+			},
+			{
+				"name": " DOB ",
+				"type": "String"
+			},
+			{
+				"name": " firstDateVisit ",
+				"type": "String"
+			},
+			{
+				"name": " lastDateVisit",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

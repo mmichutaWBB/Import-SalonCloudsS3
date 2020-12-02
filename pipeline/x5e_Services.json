@@ -1,0 +1,338 @@
+{
+	"name": "x5e_Services",
+	"properties": {
+		"activities": [
+			{
+				"name": "x5e_Services_File01",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "amazinglashslcexport//Amazing_Lash_all_locations_services_listing_File01.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.tmp_SC_Services"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AmazonS3ReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"preCopyScript": "IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'tmp_SC_Services') AND type in (N'U'))\nDROP TABLE dbo.tmp_SC_Services\n",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "LocatioName",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LocatioName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "location_id",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "location_id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "iid",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "iid",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "category_iid",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "category_iid",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ccode",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ccode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "cdescript",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "cdescript",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ob_service_name",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ob_service_name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "narration",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "narration",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "desc",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "desc",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "price_from",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "price_from",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "price_to",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "price_to",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "member_price",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "member_price",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "nonmember_price",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "nonmember_price",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "cclassname",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "cclassname",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "csubclassname",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "csubclassname",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ilocationid",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ilocationid",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "nstartlen",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "nstartlen",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ngaplen",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ngaplen",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "nfinishlen",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "nfinishlen",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "npkgprice",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "npkgprice",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "igid",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "igid",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ichgby",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ichgby",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ddatedel",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ddatedel",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "linactive",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "linactive",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "x5e_Services_File01",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_x5e",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-11-18T17:17:37Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

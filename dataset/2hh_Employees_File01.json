@@ -1,0 +1,58 @@
+{
+	"name": "2hh_Employees_File01",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SalonCloudsS3Bucket",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AmazonS3Location",
+				"bucketName": "amazinglashslcexport",
+				"fileName": "Amazing_Lash_all_locations_employee_list_File01.csv"
+			},
+			"columnDelimiter": "|",
+			"rowDelimiter": "\n",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "LocationName",
+				"type": "String"
+			},
+			{
+				"name": "location_id",
+				"type": "String"
+			},
+			{
+				"name": "iid",
+				"type": "String"
+			},
+			{
+				"name": "ccode",
+				"type": "String"
+			},
+			{
+				"name": "clastname",
+				"type": "String"
+			},
+			{
+				"name": "cfirstname",
+				"type": "String"
+			},
+			{
+				"name": "carea",
+				"type": "String"
+			},
+			{
+				"name": "cphone",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

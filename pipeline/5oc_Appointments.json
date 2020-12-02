@@ -1,0 +1,2952 @@
+{
+	"name": "5oc_Appointments",
+	"properties": {
+		"activities": [
+			{
+				"name": "5oc_Appointments_File01",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "amazinglashslcexport//history_appointments_list_File01.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.tmp_SC_Appointments"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AmazonS3ReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"preCopyScript": "IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'tmp_SC_Appointments') AND type in (N'U'))\nDROP TABLE dbo.tmp_SC_Appointments\n",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "LocationName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LocationName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " location_id ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " location_id ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptId ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptId ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ClientID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ClientID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " clientName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " clientName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Email ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Email ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Zip ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Zip ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ServiceID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ServiceID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ServiceName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ServiceName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " StaffID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " StaffID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " StaffName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " StaffName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptDate ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptDate ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckedIn ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckedIn ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckInTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckInTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckoutTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckoutTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Noshow ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Noshow ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " clientFirstVistedDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " clientFirstVistedDate",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "5oc_Appointments_File01",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_5oc",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "5oc_Appointments_File02",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "5oc_Appointments_File01",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "amazinglashslcexport//history_appointments_list_File01.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.tmp_SC_Appointments"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AmazonS3ReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "LocationName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LocationName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " location_id ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " location_id ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptId ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptId ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ClientID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ClientID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " clientName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " clientName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Email ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Email ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Zip ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Zip ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ServiceID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ServiceID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ServiceName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ServiceName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " StaffID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " StaffID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " StaffName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " StaffName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptDate ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptDate ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckedIn ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckedIn ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckInTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckInTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckoutTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckoutTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Noshow ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Noshow ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " clientFirstVistedDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " clientFirstVistedDate",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "5oc_Appointments_File02",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_5oc",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "5oc_Appointments_File03",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "5oc_Appointments_File01",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "amazinglashslcexport//history_appointments_list_File01.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.tmp_SC_Appointments"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AmazonS3ReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "LocationName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LocationName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " location_id ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " location_id ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptId ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptId ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ClientID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ClientID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " clientName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " clientName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Email ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Email ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Zip ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Zip ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ServiceID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ServiceID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ServiceName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ServiceName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " StaffID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " StaffID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " StaffName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " StaffName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptDate ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptDate ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckedIn ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckedIn ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckInTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckInTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckoutTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckoutTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Noshow ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Noshow ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " clientFirstVistedDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " clientFirstVistedDate",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "5oc_Appointments_File03",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_5oc",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "5oc_Appointments_File04",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "5oc_Appointments_File01",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "amazinglashslcexport//history_appointments_list_File01.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.tmp_SC_Appointments"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AmazonS3ReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "LocationName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LocationName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " location_id ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " location_id ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptId ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptId ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ClientID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ClientID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " clientName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " clientName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Email ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Email ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Zip ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Zip ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ServiceID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ServiceID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ServiceName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ServiceName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " StaffID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " StaffID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " StaffName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " StaffName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptDate ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptDate ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckedIn ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckedIn ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckInTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckInTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckoutTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckoutTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Noshow ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Noshow ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " clientFirstVistedDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " clientFirstVistedDate",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "5oc_Appointments_File04",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_5oc",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "5oc_Appointments_File05",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "5oc_Appointments_File01",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "amazinglashslcexport//history_appointments_list_File01.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.tmp_SC_Appointments"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AmazonS3ReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "LocationName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LocationName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " location_id ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " location_id ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptId ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptId ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ClientID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ClientID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " clientName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " clientName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Email ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Email ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Zip ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Zip ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ServiceID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ServiceID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ServiceName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ServiceName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " StaffID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " StaffID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " StaffName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " StaffName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptDate ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptDate ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckedIn ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckedIn ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckInTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckInTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckoutTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckoutTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Noshow ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Noshow ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " clientFirstVistedDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " clientFirstVistedDate",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "5oc_Appointments_File05",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_5oc",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "5oc_Appointments_File06",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "5oc_Appointments_File01",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "amazinglashslcexport//history_appointments_list_File01.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.tmp_SC_Appointments"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AmazonS3ReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "LocationName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LocationName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " location_id ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " location_id ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptId ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptId ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ClientID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ClientID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " clientName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " clientName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Email ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Email ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Zip ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Zip ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ServiceID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ServiceID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ServiceName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ServiceName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " StaffID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " StaffID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " StaffName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " StaffName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptDate ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptDate ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckedIn ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckedIn ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckInTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckInTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckoutTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckoutTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Noshow ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Noshow ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " clientFirstVistedDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " clientFirstVistedDate",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "5oc_Appointments_File06",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_5oc",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "5oc_Appointments_File07",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "5oc_Appointments_File01",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "amazinglashslcexport//history_appointments_list_File01.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.tmp_SC_Appointments"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AmazonS3ReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "LocationName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LocationName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " location_id ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " location_id ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptId ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptId ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ClientID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ClientID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " clientName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " clientName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Email ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Email ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Zip ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Zip ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ServiceID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ServiceID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ServiceName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ServiceName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " StaffID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " StaffID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " StaffName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " StaffName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptDate ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptDate ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckedIn ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckedIn ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckInTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckInTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckoutTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckoutTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Noshow ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Noshow ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " clientFirstVistedDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " clientFirstVistedDate",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "5oc_Appointments_File07",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_5oc",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "5oc_Appointments_File08",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "5oc_Appointments_File01",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "amazinglashslcexport//history_appointments_list_File01.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.tmp_SC_Appointments"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AmazonS3ReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "LocationName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LocationName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " location_id ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " location_id ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptId ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptId ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ClientID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ClientID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " clientName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " clientName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Email ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Email ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Zip ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Zip ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ServiceID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ServiceID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ServiceName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ServiceName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " StaffID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " StaffID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " StaffName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " StaffName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptDate ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptDate ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckedIn ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckedIn ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckInTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckInTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckoutTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckoutTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Noshow ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Noshow ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " clientFirstVistedDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " clientFirstVistedDate",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "5oc_Appointments_File08",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_5oc",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "5oc_Appointments_File09",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "5oc_Appointments_File01",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "amazinglashslcexport//history_appointments_list_File01.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.tmp_SC_Appointments"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AmazonS3ReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "LocationName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LocationName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " location_id ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " location_id ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptId ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptId ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ClientID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ClientID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " clientName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " clientName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Email ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Email ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Zip ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Zip ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ServiceID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ServiceID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ServiceName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ServiceName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " StaffID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " StaffID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " StaffName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " StaffName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptDate ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptDate ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckedIn ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckedIn ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckInTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckInTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckoutTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckoutTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Noshow ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Noshow ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " clientFirstVistedDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " clientFirstVistedDate",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "5oc_Appointments_File09",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_5oc",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "5oc_Appointments_File10",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "5oc_Appointments_File01",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "amazinglashslcexport//history_appointments_list_File01.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.tmp_SC_Appointments"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AmazonS3ReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "LocationName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LocationName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " location_id ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " location_id ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptId ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptId ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ClientID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ClientID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " clientName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " clientName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Email ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Email ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Zip ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Zip ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ServiceID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ServiceID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ServiceName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ServiceName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " StaffID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " StaffID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " StaffName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " StaffName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptDate ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptDate ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckedIn ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckedIn ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckInTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckInTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckoutTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckoutTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Noshow ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Noshow ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " clientFirstVistedDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " clientFirstVistedDate",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "5oc_Appointments_File10",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_5oc",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "5oc_Appointments_File11",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "5oc_Appointments_File01",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "amazinglashslcexport//history_appointments_list_File01.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.tmp_SC_Appointments"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AmazonS3ReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "LocationName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LocationName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " location_id ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " location_id ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptId ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptId ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ClientID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ClientID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " clientName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " clientName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Email ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Email ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Zip ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Zip ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ServiceID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ServiceID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ServiceName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ServiceName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " StaffID ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " StaffID ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " StaffName ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " StaffName ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptDate ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptDate ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " ApptTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " ApptTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckedIn ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckedIn ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckInTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckInTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " CheckoutTime ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " CheckoutTime ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " Noshow ",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " Noshow ",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": " clientFirstVistedDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": " clientFirstVistedDate",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "5oc_Appointments_File11",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_5oc",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-12-01T15:07:32Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

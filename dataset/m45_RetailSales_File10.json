@@ -1,0 +1,126 @@
+{
+	"name": "m45_RetailSales_File10",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SalonCloudsS3Bucket",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AmazonS3Location",
+				"bucketName": "amazinglashslcexport",
+				"fileName": "history_product_sales_File10.csv"
+			},
+			"columnDelimiter": "|",
+			"rowDelimiter": "\n",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "LocationName ",
+				"type": "String"
+			},
+			{
+				"name": " location_id ",
+				"type": "String"
+			},
+			{
+				"name": " cproductcode ",
+				"type": "String"
+			},
+			{
+				"name": " cproductdescription ",
+				"type": "String"
+			},
+			{
+				"name": " tdatetime ",
+				"type": "String"
+			},
+			{
+				"name": " ndrawerid ",
+				"type": "String"
+			},
+			{
+				"name": " itransdetailid ",
+				"type": "String"
+			},
+			{
+				"name": " iheaderid ",
+				"type": "String"
+			},
+			{
+				"name": " cinvoiceno ",
+				"type": "String"
+			},
+			{
+				"name": " iitemid ",
+				"type": "String"
+			},
+			{
+				"name": " iempid ",
+				"type": "String"
+			},
+			{
+				"name": " iclientid ",
+				"type": "String"
+			},
+			{
+				"name": " iappttype ",
+				"type": "String"
+			},
+			{
+				"name": " nprice ",
+				"type": "String"
+			},
+			{
+				"name": " nquantity ",
+				"type": "String"
+			},
+			{
+				"name": " cdiscount ",
+				"type": "String"
+			},
+			{
+				"name": " nempcharge ",
+				"type": "String"
+			},
+			{
+				"name": " nhousecharge ",
+				"type": "String"
+			},
+			{
+				"name": " lprebook ",
+				"type": "String"
+			},
+			{
+				"name": " lonline ",
+				"type": "String"
+			},
+			{
+				"name": " lrefund ",
+				"type": "String"
+			},
+			{
+				"name": " ltaxable ",
+				"type": "String"
+			},
+			{
+				"name": " lgst ",
+				"type": "String"
+			},
+			{
+				"name": " lpst ",
+				"type": "String"
+			},
+			{
+				"name": " ipackageid",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

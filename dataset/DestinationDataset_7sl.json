@@ -1,0 +1,17 @@
+{
+	"name": "DestinationDataset_7sl",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SharedWBBSQL2_AL_Staging",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tmp_SC_Clients"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

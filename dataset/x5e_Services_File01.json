@@ -1,0 +1,122 @@
+{
+	"name": "x5e_Services_File01",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SalonCloudsS3Bucket",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AmazonS3Location",
+				"bucketName": "amazinglashslcexport",
+				"fileName": "Amazing_Lash_all_locations_services_listing_File01.csv"
+			},
+			"columnDelimiter": "|",
+			"rowDelimiter": "\n",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "LocatioName",
+				"type": "String"
+			},
+			{
+				"name": "location_id",
+				"type": "String"
+			},
+			{
+				"name": "iid",
+				"type": "String"
+			},
+			{
+				"name": "category_iid",
+				"type": "String"
+			},
+			{
+				"name": "ccode",
+				"type": "String"
+			},
+			{
+				"name": "cdescript",
+				"type": "String"
+			},
+			{
+				"name": "ob_service_name",
+				"type": "String"
+			},
+			{
+				"name": "narration",
+				"type": "String"
+			},
+			{
+				"name": "desc",
+				"type": "String"
+			},
+			{
+				"name": "price_from",
+				"type": "String"
+			},
+			{
+				"name": "price_to",
+				"type": "String"
+			},
+			{
+				"name": "member_price",
+				"type": "String"
+			},
+			{
+				"name": "nonmember_price",
+				"type": "String"
+			},
+			{
+				"name": "cclassname",
+				"type": "String"
+			},
+			{
+				"name": "csubclassname",
+				"type": "String"
+			},
+			{
+				"name": "ilocationid",
+				"type": "String"
+			},
+			{
+				"name": "nstartlen",
+				"type": "String"
+			},
+			{
+				"name": "ngaplen",
+				"type": "String"
+			},
+			{
+				"name": "nfinishlen",
+				"type": "String"
+			},
+			{
+				"name": "npkgprice",
+				"type": "String"
+			},
+			{
+				"name": "igid",
+				"type": "String"
+			},
+			{
+				"name": "ichgby",
+				"type": "String"
+			},
+			{
+				"name": "ddatedel",
+				"type": "String"
+			},
+			{
+				"name": "linactive",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
